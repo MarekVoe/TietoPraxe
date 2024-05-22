@@ -1,0 +1,3 @@
+C:/Users/user/CLionProjects/TietoPraxe/cmake-build-debug/CMakeFiles/TietoPraxe.dir
+C:/Users/user/CLionProjects/TietoPraxe/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/user/CLionProjects/TietoPraxe/cmake-build-debug/CMakeFiles/rebuild_cache.dir
