@@ -2,6 +2,9 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 #include "Base.h"
+#include "Player.h"
+#include "../inputs/InputManager.h"
+#include "../rendering/Renderer.h"
 
 class Window {
 public:
@@ -11,5 +14,7 @@ public:
     // Inicializace okna
     void Init();
 private:
-
+    Player player;
+    Renderer renderer;
+    InputManager inputManager;
 };

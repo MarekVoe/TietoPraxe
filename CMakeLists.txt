@@ -36,6 +36,8 @@ add_executable(${PROJECT_NAME}
         rendering/Renderer.cpp
         rendering/Renderer.h
         rendering/Renderer.h
+        inputs/InputManager.cpp
+        inputs/InputManager.h
 )
 
 #set(raylib_VERBOSE 1)

@@ -1,5 +1,5 @@
-//
-// Created by user on 23.05.2024.
-//
-
 #include "Renderer.h"
+
+void Renderer::Render(Player player) {
+    DrawRectangleRec(player.GetPlayerModel(), player.GetColor());
+}
