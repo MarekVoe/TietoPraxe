@@ -10,6 +10,7 @@ void Window::Init() {
     inputManager = InputManager();
     inputManager.Init();
     renderer = Renderer();
+    renderer.Init();
     gameScene = GameScene();
     gameScene.Init();
     Update();

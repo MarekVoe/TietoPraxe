@@ -1,7 +1,12 @@
 #include "Renderer.h"
 #include "../core/Window.h"
 
+void Renderer::Init() {
+    backgroundTexture = LoadTexture("../assets/BackgroundLevel01.png");
+}
+
 void Renderer::RenderGame(Player player) {
+    DrawTexture(backgroundTexture, 0, 0, WHITE);
     DrawTextureRec(player.GetTexture(), player.GetPlayerModel(), player.GetPlayerPosition(), player.GetColor());
     DrawText(TextFormat("Player health: %d", player.GetHealth()),20, 10, 20, RED);
     DrawText(TextFormat("Player ammo: %d", player.GetAmmo()),20, 40, 20, WHITE);

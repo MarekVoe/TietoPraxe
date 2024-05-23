@@ -5,8 +5,9 @@
 
 class Renderer {
 public:
+    void Init();
     void RenderGame(Player player);
     void RenderMenu(GameScene& gameScene);
 private:
-
+    Texture2D backgroundTexture;
 };
