@@ -33,6 +33,9 @@ add_executable(${PROJECT_NAME}
         core/Player.h
         core/Player.h
         core/Player.h
+        rendering/Renderer.cpp
+        rendering/Renderer.h
+        rendering/Renderer.h
 )
 
 #set(raylib_VERBOSE 1)
