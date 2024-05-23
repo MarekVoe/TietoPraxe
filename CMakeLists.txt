@@ -31,13 +31,13 @@ add_executable(${PROJECT_NAME}
         core/Window.h
         core/Player.cpp
         core/Player.h
-        core/Player.h
-        core/Player.h
         rendering/Renderer.cpp
-        rendering/Renderer.h
         rendering/Renderer.h
         inputs/InputManager.cpp
         inputs/InputManager.h
+        core/Enemy.cpp
+        core/Asteroid.cpp
+        core/Asteroid.h
 )
 
 #set(raylib_VERBOSE 1)

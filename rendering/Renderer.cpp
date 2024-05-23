@@ -1,5 +1,5 @@
 #include "Renderer.h"
 
 void Renderer::Render(Player player) {
-    DrawRectangleRec(player.GetPlayerModel(), player.GetColor());
+    DrawTextureRec(player.GetTexture(), player.GetPlayerModel(), player.GetPlayerPosition() , player.GetColor());
 }
