@@ -2,6 +2,12 @@
 
 void Renderer::RenderGame(Player player) {
     DrawTextureRec(player.GetTexture(), player.GetPlayerModel(), player.GetPlayerPosition() , player.GetColor());
+
+    for (int i = 0; i < player.GetNumShoots(); i++) {
+        if (player.GetShootActive(i)) {
+            DrawRectangleRec(player.GetShootModel(i), player.GetColor());
+        }
+    }
 }
 
 void Renderer::RenderMenu(GameScene& gameScene) {
