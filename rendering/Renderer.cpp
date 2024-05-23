@@ -20,6 +20,7 @@ void Renderer::RenderGame(Player player) {
 }
 
 void Renderer::RenderMenu(GameScene& gameScene) {
+    DrawTexture(backgroundTexture, 0,0, WHITE);
     Rectangle playGameButton = {1280 / 2 - 100, 720 / 2 - 50, 200, 40};
     Rectangle exitGameButton = {1280 / 2 - 100, 720 / 2 + 50, 200, 40};
 
