@@ -1,7 +1,7 @@
 #include "GameScene.h"
 
 void GameScene::Init() {
-    SetScene(GameScene::SCENE_MAIN);
+    SetScene(GameScene::SCENE_MENU);
 }
 
 GameScene::Scene GameScene::GetCurrentScene() const {

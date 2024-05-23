@@ -22,7 +22,7 @@ void Window::Update() {
         player.Update();
         switch(gameScene.GetCurrentScene()) {
             case GameScene::SCENE_MENU:
-                renderer.RenderMenu();
+                renderer.RenderMenu(gameScene);
             break;
 
             case GameScene::SCENE_MAIN:

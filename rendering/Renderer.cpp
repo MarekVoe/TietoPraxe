@@ -4,6 +4,23 @@ void Renderer::RenderGame(Player player) {
     DrawTextureRec(player.GetTexture(), player.GetPlayerModel(), player.GetPlayerPosition() , player.GetColor());
 }
 
-void Renderer::RenderMenu() {
+void Renderer::RenderMenu(GameScene& gameScene) {
+    Rectangle playGameButton = {1280 / 2 - 100, 720 / 2 - 50, 200, 40};
+    Rectangle exitGameButton = {1280 / 2 - 100, 720 / 2 + 50, 200, 40};
 
+    DrawRectangleRec(playGameButton, LIGHTGRAY);
+    DrawRectangleLinesEx(playGameButton, 2, GRAY);
+    DrawText("Play Game", playGameButton.x + playGameButton.width/2 - MeasureText("Play Game", 20)/2, playGameButton.y + 10, 20, MAROON);
+
+    DrawRectangleRec(exitGameButton, LIGHTGRAY);
+    DrawRectangleLinesEx(exitGameButton, 2, GRAY);
+    DrawText("Exit Game", exitGameButton.x + exitGameButton.width/2 - MeasureText("Exit Game", 20)/2, exitGameButton.y + 10, 20, MAROON);
+
+    if (CheckCollisionPointRec(GetMousePosition(), playGameButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+        gameScene.SetScene(GameScene::SCENE_MAIN);
+    }
+
+    if (CheckCollisionPointRec(GetMousePosition(), exitGameButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+        CloseWindow();
+    }
 }
