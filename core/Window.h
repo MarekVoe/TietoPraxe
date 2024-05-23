@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "../inputs/InputManager.h"
 #include "../rendering/Renderer.h"
+#include "GameScene.h"
 
 class Window {
 public:
@@ -17,4 +18,5 @@ private:
     Player player;
     Renderer renderer;
     InputManager inputManager;
+    GameScene gameScene;
 };

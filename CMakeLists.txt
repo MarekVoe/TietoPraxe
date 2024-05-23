@@ -38,6 +38,8 @@ add_executable(${PROJECT_NAME}
         core/Enemy.cpp
         core/Asteroid.cpp
         core/Asteroid.h
+        core/GameScene.cpp
+        core/GameScene.h
 )
 
 #set(raylib_VERBOSE 1)

@@ -1,5 +1,9 @@
 #include "Renderer.h"
 
-void Renderer::Render(Player player) {
+void Renderer::RenderGame(Player player) {
     DrawTextureRec(player.GetTexture(), player.GetPlayerModel(), player.GetPlayerPosition() , player.GetColor());
+}
+
+void Renderer::RenderMenu() {
+
 }

@@ -4,7 +4,8 @@
 
 class Renderer {
 public:
-    void Render(Player player);
+    void RenderGame(Player player);
+    void RenderMenu();
 private:
 
 };
