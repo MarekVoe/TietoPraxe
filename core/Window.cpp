@@ -3,6 +3,8 @@
 void Window::Init() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Tieto Praxe - Game");
     SetTargetFPS(60);
+    gameIcon = LoadImage("../assets/GameIcon.png");
+    SetWindowIcon(gameIcon);
     player = Player();
     player.Init();
     inputManager = InputManager();
@@ -15,7 +17,6 @@ void Window::Init() {
 
 
 void Window::Update() {
-
     while(!WindowShouldClose()) {
         inputManager.Update(player);
         BeginDrawing();
@@ -27,8 +28,6 @@ void Window::Update() {
 
             case GameScene::SCENE_MAIN:
                 renderer.RenderGame(player);
-                DrawText(TextFormat("Player health: %d", player.GetHealth()),20, 10, 20, RED);
-                DrawText(TextFormat("Score: %d", player.GetScore()), SCREEN_WIDTH / 2, 10,20, WHITE);
             break;
         }
         ClearBackground(BLACK);

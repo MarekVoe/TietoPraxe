@@ -19,6 +19,8 @@ public:
     int GetScore();
     void SetScore(int score);
     void Shoot();
+    int GetAmmo();
+    void SetAmmo(int ammo);
     int GetNumShoots() const { return NUM_SHOOTS; }
 
     bool GetShootActive(int index) const { return shootActive[index]; }
@@ -35,6 +37,7 @@ private:
     Texture2D shipTexture;
     Vector2 position;
     int score = 0;
+    int ammo = 20;
 
     // Shooting vars
     static const int NUM_SHOOTS = 50;

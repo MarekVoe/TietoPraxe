@@ -13,7 +13,7 @@ void InputManager::Update(Player& player) {
     if (IsKeyDown(KEY_S)) player.GetPlayerPosition().y += player.GetPlayerSpeed().y;
 
 
-    if (IsKeyDown(KEY_SPACE)) {
+    if (IsKeyDown(KEY_SPACE) && player.GetAmmo() > 0) {
         player.Shoot();
     }
 }

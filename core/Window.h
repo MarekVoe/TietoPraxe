@@ -19,4 +19,5 @@ private:
     Renderer renderer;
     InputManager inputManager;
     GameScene gameScene;
+    Image gameIcon;
 };

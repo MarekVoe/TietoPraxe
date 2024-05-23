@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 void Player::Init() {
     shipTexture = LoadTexture("../assets/ShipSprite.png");
     playerDebugModel = { 0.0f, 0.0f, (float)shipTexture.width, (float)shipTexture.height };
@@ -20,12 +18,12 @@ void Player::Init() {
 
 void Player::Shoot() {
         shootRate += 5;
-
         for (int i = 0; i < NUM_SHOOTS; i++) {
             if (!shootActive[i] && shootRate % 20 == 0) {
                 shootActive[i] = true;
                 shootModels[i].x = position.x;
                 shootModels[i].y = position.y + playerDebugModel.height / 4;
+                ammo--;
                 break;
             }
         }
@@ -87,4 +85,12 @@ void Player::SetHealth(int health) {
 
 int Player::GetHealth() {
     return this->health;
+}
+
+int Player::GetAmmo() {
+    return this->ammo;
+}
+
+void Player::SetAmmo(int ammo) {
+    this->ammo = ammo;
 }
