@@ -8,7 +8,7 @@ void Asteroid::Init(Vector2 startPos, Vector2 startSpeed, Color color) {
     active = true;
 }
 
-void Asteroid::Update() {
+void Asteroid::Update(Player& player) {
     if (!active)
         return;
 
@@ -17,6 +17,7 @@ void Asteroid::Update() {
     if (asteroidModel.x + asteroidModel.width < 0) {
         active = false;
         UnloadTexture(asteroidTexture);
+        player.SetScore(player.GetScore() + 2);
     }
 }
 

@@ -5,22 +5,24 @@ void Renderer::Init() {
     backgroundTexture = LoadTexture("../assets/BackgroundLevel01.png");
 }
 
-void Renderer::RenderGameOver(GameScene& gameScene) {
+void Renderer::RenderGameOver(GameScene& gameScene, Player& player) {
     DrawTexture(backgroundTexture, 0,0, WHITE);
-    Rectangle playGameButton = {1280 / 2 - 100, 720 / 2 - 50, 200, 40};
-    Rectangle exitGameButton = {1280 / 2 - 100, 720 / 2 + 50, 200, 40};
+    Rectangle restartGameButton = {1280 / 2 - 100, 720 / 2 - 50, 200, 40};
+    Rectangle exitGameButton = {1280 / 2 - 100, 720 / 2 + 25, 200, 40};
 
-    DrawText("Game Over", GetScreenWidth() / 2, 10,20, RED);
-
-    DrawRectangleRec(playGameButton, LIGHTGRAY);
-    DrawRectangleLinesEx(playGameButton, 2, GRAY);
-    DrawText("Restart", playGameButton.x + playGameButton.width/2 - MeasureText("Restart", 20)/2, playGameButton.y + 10, 20, BLUE);
+    DrawText("Game Over", 1280 / 2 - 100, 250,40, RED);
+    DrawRectangleRec(restartGameButton, LIGHTGRAY);
+    DrawRectangleLinesEx(restartGameButton, 2, GRAY);
+    DrawText("Restart", restartGameButton.x + restartGameButton.width/2 - MeasureText("Restart", 20)/2, restartGameButton.y + 10, 20, BLUE);
 
     DrawRectangleRec(exitGameButton, LIGHTGRAY);
     DrawRectangleLinesEx(exitGameButton, 2, GRAY);
     DrawText("Exit Game", exitGameButton.x + exitGameButton.width/2 - MeasureText("Exit Game", 20)/2, exitGameButton.y + 10, 20, BLUE);
 
-    if (CheckCollisionPointRec(GetMousePosition(), playGameButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+    if (CheckCollisionPointRec(GetMousePosition(), restartGameButton) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+        player.SetHealth(3);
+        player.SetScore(0);
+        player.SetAmmo(20);
         gameScene.SetScene(GameScene::SCENE_MAIN);
     }
 

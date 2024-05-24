@@ -35,7 +35,7 @@ void AsteroidManager::Update(Player& player) {
     }
 
     for(auto& asteroid : asteroids) {
-        asteroid.Update();
+        asteroid.Update(player);
 
         if (CheckAsteroidCollision(player, asteroid) && asteroid.IsActive()) {
             asteroid.SetInactive();

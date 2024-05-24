@@ -36,7 +36,7 @@ void Window::Update() {
             break;
 
             case GameScene::SCENE_GAME_OVER:
-                renderer.RenderGameOver(gameScene);
+                renderer.RenderGameOver(gameScene, player);
             break;
         }
         ClearBackground(BLACK);
