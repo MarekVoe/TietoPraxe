@@ -7,6 +7,7 @@
 #include "../rendering/Renderer.h"
 #include "GameScene.h"
 #include "AsteroidManager.h"
+#include "EnemyManager.h"
 
 class Window {
 public:
@@ -17,9 +18,11 @@ public:
     void Init();
 private:
     Player player;
+    int frameCounter = 0;
     Renderer renderer;
     InputManager inputManager;
     GameScene gameScene;
     Image gameIcon;
     AsteroidManager asteroidManager;
+    EnemyManager enemyManager;
 };

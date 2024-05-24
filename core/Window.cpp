@@ -1,3 +1,5 @@
+#include <cmath>
+#include <iostream>
 #include "Window.h"
 
 void Window::Init() {
@@ -13,33 +15,49 @@ void Window::Init() {
     renderer.Init();
     gameScene = GameScene();
     gameScene.Init();
+    enemyManager = EnemyManager();
+    enemyManager.Init(10);
     asteroidManager = AsteroidManager();
     asteroidManager.Init();
+    std::cout << "Test" << std::endl;
     Update();
 }
 
 
 void Window::Update() {
     while(!WindowShouldClose()) {
+        frameCounter++;
         inputManager.Update(player);
         BeginDrawing();
+        ClearBackground(BLACK); // Přesunuto sem
+
         player.Update(gameScene);
         switch(gameScene.GetCurrentScene()) {
             case GameScene::SCENE_MENU:
                 renderer.RenderMenu(gameScene);
-            break;
+                break;
 
             case GameScene::SCENE_MAIN:
                 renderer.RenderGame(player);
                 asteroidManager.Update(player);
                 asteroidManager.Draw();
-            break;
+                /*
+                enemyManager.Update(player);
+                enemyManager.Draw();
+                if (frameCounter >= 20) {
+                    Vector2 startPos = {1280, (float) GetRandomValue(0, 720)};
+                    Vector2 startSpeed = {-2.0f, 0.0f};
+                    enemyManager.SpawnEnemy(startPos, startSpeed, WHITE);
+                    frameCounter = 0;
+                    }
+                    */
+                break;
 
             case GameScene::SCENE_GAME_OVER:
                 renderer.RenderGameOver(gameScene, player);
-            break;
+                break;
         }
-        ClearBackground(BLACK);
+
         EndDrawing();
     }
     CloseWindow();

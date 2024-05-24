@@ -19,7 +19,20 @@ bool AsteroidManager::CheckAsteroidCollision(Player& player, Asteroid& asteroid)
     return CheckCollisionRecs(playerRect, asteroidRect);
 }
 
+bool AsteroidManager::CheckShootCollision(Player &player, Asteroid &asteroid) {
+    for (int i = 0; i < player.GetNumShoots(); i++) {
+        if(player.GetShootActive(i)) {
+            Rectangle bulletRec = {player.GetShootModel(i).x, player.GetShootModel(i).y, player.GetShootModel(i).width, player.GetShootModel(i).height};
+            Rectangle asteroidRec = asteroid.GetAsteroidModel();
 
+            if(CheckCollisionRecs(bulletRec, asteroidRec)) {
+                player.SetShootActive(i, false);
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 void AsteroidManager::Update(Player& player) {
     spawnCounter++;
@@ -40,6 +53,31 @@ void AsteroidManager::Update(Player& player) {
         if (CheckAsteroidCollision(player, asteroid) && asteroid.IsActive()) {
             asteroid.SetInactive();
             player.SetHealth(player.GetHealth() - 1);
+        }
+
+        if (CheckShootCollision(player, asteroid) && asteroid.IsActive()) {
+            asteroid.SetInactive();
+            player.SetScore(player.GetScore() + 5);
+            player.SetAmmo(player.GetAmmo() + 2);
+            numOfDestroyedAsteroids++;
+            switch(numOfDestroyedAsteroids) {
+                case 10:
+                    spawnRate = 60;
+                    TraceLog(LOG_INFO, TextFormat("Spawn Rate set to: %d \n", spawnRate));
+                break;
+
+                case 20:
+                    spawnRate = 40;
+                break;
+
+                case 30:
+                    spawnRate = 20;
+                break;
+
+                case 40:
+                    spawnRate = 10;
+                break;
+            }
         }
     }
 
