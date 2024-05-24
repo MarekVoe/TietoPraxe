@@ -10,7 +10,8 @@ void Renderer::RenderGameOver(GameScene& gameScene, Player& player) {
     Rectangle restartGameButton = {1280 / 2 - 100, 720 / 2 - 50, 200, 40};
     Rectangle exitGameButton = {1280 / 2 - 100, 720 / 2 + 25, 200, 40};
 
-    DrawText("Game Over", 1280 / 2 - 100, 250,40, RED);
+    DrawText("Game Over", 1280 / 2 - 100, 200,40, RED);
+    DrawText(TextFormat("Final Score: %d", player.GetScore()), 1280 / 2 - 80, 250,25, WHITE);
     DrawRectangleRec(restartGameButton, LIGHTGRAY);
     DrawRectangleLinesEx(restartGameButton, 2, GRAY);
     DrawText("Restart", restartGameButton.x + restartGameButton.width/2 - MeasureText("Restart", 20)/2, restartGameButton.y + 10, 20, BLUE);
