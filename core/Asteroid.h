@@ -1,16 +1,20 @@
 #pragma once
 #include "Base.h"
+#include "Player.h"
 
 class Asteroid {
 public:
-    void Init();
-    int GetSpeed();
-    Texture2D GetAsteroidTexture();
-    void SetSpeed(int speed);
-    void UnloadAsteroidTexture();
-    Vector2 GetSpawnPos();
+    void Init(Vector2 startPos, Vector2 startSpeed, Color color);
+    void Update();
+    void Draw() const;
+    bool IsActive() const { return active; }
+    Rectangle GetAsteroidModel();
+    Vector2 GetAsteroidPosition();
+    void SetInactive();
 private:
-    int speed = 2;
+    Rectangle asteroidModel;
+    Vector2 speed;
+    Color color;
+    bool active;
     Texture2D asteroidTexture;
-    Vector2 spawnPos;
 };

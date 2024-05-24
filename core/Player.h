@@ -1,5 +1,7 @@
 #pragma once
 #include "Base.h"
+#include "GameScene.h"
+
 #define MAX_SHOOTS 50
 
 
@@ -7,7 +9,7 @@ class Player {
 public:
 
     void Init();
-    void Update();
+    void Update(GameScene& gameScene);
     Rectangle& GetPlayerModel();
     Vector2 GetPlayerSpeed();
     int GetHealth();

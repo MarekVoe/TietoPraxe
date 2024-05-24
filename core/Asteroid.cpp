@@ -1,26 +1,42 @@
 #include "Asteroid.h"
 
-void Asteroid::Init() {
+void Asteroid::Init(Vector2 startPos, Vector2 startSpeed, Color color) {
     asteroidTexture = LoadTexture("../assets/MeteoriteSprite.png");
-    spawnPos = {(float) GetRandomValue(0, 1280), (float) GetRandomValue(0, 720) };
+    asteroidModel = {startPos.x, startPos.y, 30,30};
+    speed = startSpeed;
+    this->color = color;
+    active = true;
 }
 
-void Asteroid::UnloadAsteroidTexture() {
+void Asteroid::Update() {
+    if (!active)
+        return;
+
+    asteroidModel.x += speed.x;
+
+    if (asteroidModel.x + asteroidModel.width < 0) {
+        active = false;
+        UnloadTexture(asteroidTexture);
+    }
+}
+
+Rectangle Asteroid::GetAsteroidModel() {
+    return this->asteroidModel;
+}
+
+void Asteroid::Draw() const {
+    if (active) {
+        Rectangle sourceRect = {0.0f, 0.0f, (float) asteroidTexture.width, (float) asteroidTexture.height};
+        Vector2 position = {asteroidModel.x, asteroidModel.y};
+        DrawTextureRec(asteroidTexture, sourceRect, position, color);
+    }
+}
+
+void Asteroid::SetInactive() {
+    active = false;
     UnloadTexture(asteroidTexture);
 }
 
-Texture2D Asteroid::GetAsteroidTexture() {
-    return this->asteroidTexture;
-}
-
-int Asteroid::GetSpeed() {
-    return this->speed;
-}
-
-void Asteroid::SetSpeed(int speed) {
-    this->speed = speed;
-}
-
-Vector2 Asteroid::GetSpawnPos() {
-    return this->spawnPos;
+Vector2 Asteroid::GetAsteroidPosition() {
+    return { asteroidModel.x, asteroidModel.y };
 }

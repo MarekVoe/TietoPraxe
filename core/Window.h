@@ -6,6 +6,7 @@
 #include "../inputs/InputManager.h"
 #include "../rendering/Renderer.h"
 #include "GameScene.h"
+#include "AsteroidManager.h"
 
 class Window {
 public:
@@ -20,4 +21,5 @@ private:
     InputManager inputManager;
     GameScene gameScene;
     Image gameIcon;
+    AsteroidManager asteroidManager;
 };

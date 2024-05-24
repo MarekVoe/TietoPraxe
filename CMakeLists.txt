@@ -40,6 +40,8 @@ add_executable(${PROJECT_NAME}
         core/Asteroid.h
         core/GameScene.cpp
         core/GameScene.h
+        core/AsteroidManager.cpp
+        core/AsteroidManager.h
 )
 
 #set(raylib_VERBOSE 1)

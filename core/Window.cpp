@@ -13,6 +13,8 @@ void Window::Init() {
     renderer.Init();
     gameScene = GameScene();
     gameScene.Init();
+    asteroidManager = AsteroidManager();
+    asteroidManager.Init();
     Update();
 }
 
@@ -21,7 +23,7 @@ void Window::Update() {
     while(!WindowShouldClose()) {
         inputManager.Update(player);
         BeginDrawing();
-        player.Update();
+        player.Update(gameScene);
         switch(gameScene.GetCurrentScene()) {
             case GameScene::SCENE_MENU:
                 renderer.RenderMenu(gameScene);
@@ -29,6 +31,12 @@ void Window::Update() {
 
             case GameScene::SCENE_MAIN:
                 renderer.RenderGame(player);
+                asteroidManager.Update(player);
+                asteroidManager.Draw();
+            break;
+
+            case GameScene::SCENE_GAME_OVER:
+                renderer.RenderGameOver(gameScene);
             break;
         }
         ClearBackground(BLACK);

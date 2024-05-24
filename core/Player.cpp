@@ -29,11 +29,15 @@ void Player::Shoot() {
         }
 }
 
-void Player::Update() {
+void Player::Update(GameScene& gameScene) {
     if (position.x <= 0) position.x = 0;
     if (position.x + playerDebugModel.width >= 1280) position.x = 1280 - playerDebugModel.width;
     if (position.y <= 0) position.y = 0;
     if (position.y + playerDebugModel.height >= 720) position.y = 720 - playerDebugModel.height;
+
+    if (health <= 0) {
+        gameScene.SetScene(GameScene::SCENE_GAME_OVER);
+    }
 
     for (int i = 0; i < NUM_SHOOTS; i++) {
         if (shootActive[i]) {
